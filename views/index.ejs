@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nunes Sports CRUD</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Nunes Sports CRUD</h1>
+    <form action="/produto" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" name="preco" required>
+
+        <button type="submit">Adicionar Produto</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+        <% produtos.forEach(produto => { %>
+            <tr>
+                <td><%= produto.nome %></td>
+                <td><%= produto.codigo %></td>
+                <td><%= produto.descricao %></td>
+                <td><%= produto.preco %></td>
+                <td>
+                    <a href="/produto/<%= produto.id %>">Editar</a>
+                    <form action="/produto/<%= produto.id %>/deletar" method="post" style="display: inline;">
+                        <button type="submit">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
